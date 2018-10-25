@@ -1,0 +1,12 @@
+<% if is_admin? %>
+		<%= render "dashboard/partials/admin-dashboard" %>
+	<% elsif is_superadmin? %>
+		<%= render "dashboard/partials/admin-dashboard" %>
+	<% elsif is_contributor?(current_user) %>
+		<%= render "dashboard/partials/contributor-dashboard" %>
+	<% elsif is_producer?(current_user) %>
+		<%= render "dashboard/partials/producer-dashboard" %>
+<% end %>
+
+
+

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matricule:</strong>
+  <%= @employe.matricule %>
+</p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @employe.nom %>
+</p>
+
+<p>
+  <strong>Prenom:</strong>
+  <%= @employe.prenom %>
+</p>
+
+<p>
+  <strong>Sexe:</strong>
+  <%= @employe.sexe %>
+</p>
+
+<p>
+  <strong>Date naissance:</strong>
+  <%= @employe.date_naissance %>
+</p>
+
+<p>
+  <strong>Lieu naissance:</strong>
+  <%= @employe.lieu_naissance %>
+</p>
+
+<p>
+  <strong>Adresse:</strong>
+  <%= @employe.adresse %>
+</p>
+
+<p>
+  <strong>Telephone:</strong>
+  <%= @employe.telephone %>
+</p>
+
+<%= link_to 'Edit', edit_employe_path(@employe) %> |
+<%= link_to 'Back', employes_path %>

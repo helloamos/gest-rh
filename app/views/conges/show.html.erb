@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Type conge:</strong>
+  <%= @conge.type_conge %>
+</p>
+
+<p>
+  <strong>Date debut:</strong>
+  <%= @conge.date_debut %>
+</p>
+
+<p>
+  <strong>Cause:</strong>
+  <%= @conge.cause %>
+</p>
+
+<p>
+  <strong>Matricule employe:</strong>
+  <%= @conge.matricule_employe %>
+</p>
+
+<%= link_to 'Edit', edit_conge_path(@conge) %> |
+<%= link_to 'Back', conges_path %>

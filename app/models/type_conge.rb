@@ -1,0 +1,2 @@
+class TypeConge < ApplicationRecord
+end

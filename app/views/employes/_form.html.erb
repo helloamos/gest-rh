@@ -1,0 +1,60 @@
+<%= form_with(model: employe, local: true) do |form| %>
+  <div class="modal-body">
+  <% if employe.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(employe.errors.count, "error") %> prohibited this employe from being saved:</h2>
+
+      <ul>
+      <% employe.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :matricule %>
+    <%= form.text_field :matricule, id: :employe_matricule, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :nom %>
+    <%= form.text_field :nom, id: :employe_nom, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :prenom %>
+    <%= form.text_field :prenom, id: :employe_prenom, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :sexe %>
+    <%= form.text_field :sexe, id: :employe_sexe, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_naissance %>
+    <%= form.date_field :date_naissance, id: :employe_date_naissance, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :lieu_naissance %>
+    <%= form.text_field :lieu_naissance, id: :employe_lieu_naissance, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :adresse %>
+    <%= form.text_field :adresse, id: :employe_adresse, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :telephone %>
+    <%= form.text_field :telephone, id: :employe_telephone, class: "form-control" %>
+  </div>
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matricule employe:</strong>
+  <%= @avancement.matricule_employe %>
+</p>
+
+<p>
+  <strong>Date avancement:</strong>
+  <%= @avancement.date_avancement %>
+</p>
+
+<%= link_to 'Edit', edit_avancement_path(@avancement) %> |
+<%= link_to 'Back', avancements_path %>

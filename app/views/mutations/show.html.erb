@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matricule employe:</strong>
+  <%= @mutation.matricule_employe %>
+</p>
+
+<p>
+  <strong>Etablissement:</strong>
+  <%= @mutation.etablissement %>
+</p>
+
+<p>
+  <strong>Cause:</strong>
+  <%= @mutation.cause %>
+</p>
+
+<p>
+  <strong>Date mutation:</strong>
+  <%= @mutation.date_mutation %>
+</p>
+
+<%= link_to 'Edit', edit_mutation_path(@mutation) %> |
+<%= link_to 'Back', mutations_path %>

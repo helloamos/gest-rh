@@ -1,0 +1,2 @@
+module CongesHelper
+end

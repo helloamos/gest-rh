@@ -1,0 +1,41 @@
+<%= form_with(model: mutation, local: true) do |form| %>
+  <div class="modal-body">
+
+  <% if mutation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(mutation.errors.count, "error") %> prohibited this mutation from being saved:</h2>
+
+      <ul>
+      <% mutation.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :matricule_employe %>
+    <%= form.text_field :matricule_employe, id: :mutation_matricule_employe, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :etablissement %>
+    <%= form.text_field :etablissement, id: :mutation_etablissement, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cause %>
+    <%= form.text_area :cause, id: :mutation_cause , class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_mutation %>
+    <%= form.date_field :date_mutation, id: :mutation_date_mutation , class: "form-control"  %>
+  </div>
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

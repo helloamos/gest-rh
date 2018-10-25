@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Matricule employe:</strong>
+  <%= @sanction.matricule_employe %>
+</p>
+
+<p>
+  <strong>Duree sanction:</strong>
+  <%= @sanction.duree_sanction %>
+</p>
+
+<p>
+  <strong>Type sanction:</strong>
+  <%= @sanction.type_sanction %>
+</p>
+
+<p>
+  <strong>Cause:</strong>
+  <%= @sanction.cause %>
+</p>
+
+<%= link_to 'Edit', edit_sanction_path(@sanction) %> |
+<%= link_to 'Back', sanctions_path %>

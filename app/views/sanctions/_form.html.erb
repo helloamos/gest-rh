@@ -1,0 +1,41 @@
+<%= form_with(model: sanction, local: true) do |form| %>
+  <div class="modal-body">
+
+  <% if sanction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(sanction.errors.count, "error") %> prohibited this sanction from being saved:</h2>
+
+      <ul>
+      <% sanction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :matricule_employe %>
+    <%= form.text_field :matricule_employe, id: :sanction_matricule_employe, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :duree_sanction %>
+    <%= form.text_field :duree_sanction, id: :sanction_duree_sanction, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :type_sanction %>
+    <%= form.text_field :type_sanction, id: :sanction_type_sanction, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :cause %>
+    <%= form.text_area :cause, id: :sanction_cause, class: "form-control" %>
+  </div>
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

@@ -1,0 +1,46 @@
+<div class="container">
+	<div class="row">
+	<div class="col-md-12">
+	<div class="index-heading pull-left">
+	<h3>Liste des avancements</h3>
+	</div>
+   <div class="pull-right">
+   <p>
+	<%= link_to raw('<i class="fa fa-plus" aria-hidden="true"></i> Nouveau'), new_avancement_path, class: "btn btn-primary", remote: true %>
+	</p>
+	</div>
+	</div>
+ </div>
+  <div class="row">
+ <div class="col-lg-12">
+	<div class="panel panel-default">
+		  
+			 
+					<div class="panel-body">
+		<table id="table-list" class="table table-striped table-bordered table-hover">
+  <thead>
+    <tr>
+      <th>Matricule employe</th>
+      <th>Date avancement</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @avancements.each do |avancement| %>
+      <tr>
+        <td><%= avancement.matricule_employe %></td>
+        <td><%= avancement.date_avancement %></td>
+       
+        <td><%= link_to 'Edit', edit_avancement_path(avancement) %>
+       <%= link_to 'Destroy', avancement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</div>
+	</div>
+</div>
+</div>
+</div>
+<div id="avancement-modal" class="modal fade"></div>

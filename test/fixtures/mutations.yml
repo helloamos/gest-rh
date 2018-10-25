@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  matricule_employe: MyString
+  etablissement: MyString
+  cause: MyText
+  date_mutation: 2018-10-09
+
+two:
+  matricule_employe: MyString
+  etablissement: MyString
+  cause: MyText
+  date_mutation: 2018-10-09
