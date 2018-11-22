@@ -23,6 +23,17 @@ ActiveRecord::Schema.define(version: 20181009212009) do
   end
 
   create_table "conges", force: :cascade do |t|
+    t.string "matricule_employe"
+    t.date "date_debut"
+    t.date "date_fin"
+    t.string "motif"
+    t.string "etat"
+    t.bigint "type_conge_id", null: false
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["type_conge_id"], name: "index_conges_on_type_conge_id"
+    t.index ["user_id"], name: "index_conges_on_user_id"
   end
 
   create_table "employes", force: :cascade do |t|
@@ -111,4 +122,6 @@ ActiveRecord::Schema.define(version: 20181009212009) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "conges", "type_conges"
+  add_foreign_key "conges", "users"
 end

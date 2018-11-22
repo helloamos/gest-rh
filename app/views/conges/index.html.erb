@@ -21,25 +21,17 @@
   <thead>
     <tr>
       <th>Type conge</th>
-      <th>Date debut</th>
+      <th>Date début</th>
+      <th>Date fin</th>
       <th>Cause</th>
       <th>Matricule employe</th>
       <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @conges.each do |conge| %>
-      <tr>
-        <td><%= conge.type_conge %></td>
-        <td><%= conge.date_debut %></td>
-        <td><%= conge.cause %></td>
-        <td><%= conge.matricule_employe %></td>
-        
-        <td><%= link_to 'Edit', edit_conge_path(conge) %>
-        <%= link_to 'Destroy', conge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="conges">
+    	<%= render('index') %>
+
   </tbody>
 </table>
 

@@ -32,6 +32,7 @@ class EmployesController < ApplicationController
 
     respond_to do |format|
       if @employe.save
+        @employes = Employe.all
         format.html { redirect_to @employe, notice: 'Employe was successfully created.' }
         format.json { render :show, status: :created, location: @employe }
         format.js
@@ -39,6 +40,7 @@ class EmployesController < ApplicationController
       else
         format.html { render :new }
         format.json { render json: @employe.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -48,6 +50,7 @@ class EmployesController < ApplicationController
   def update
     respond_to do |format|
       if @employe.update(employe_params)
+        @employes = Employe.all
         format.html { redirect_to @employe, notice: 'Employe was successfully updated.' }
         format.json { render :show, status: :ok, location: @employe }
         format.js
@@ -58,11 +61,16 @@ class EmployesController < ApplicationController
     end
   end
 
+  def delete
+    @employe = Employe.find(params[:id])
+  end
+
   # DELETE /employes/1
   # DELETE /employes/1.json
   def destroy
     @employe.destroy
     respond_to do |format|
+      @employes = Employe.all
       format.html { redirect_to employes_url, notice: 'Employe was successfully destroyed.' }
       format.json { head :no_content }
       format.js
@@ -77,6 +85,6 @@ class EmployesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def employe_params
-      params.require(:employe).permit(:matricule, :nom, :prenom, :sexe, :date_naissance, :lieu_naissance, :adresse, :telephone)
+      params.require(:employe).permit(:matricule, :nom, :prenom, :sexe, :date_naissance, :lieu_naissance, :adresse, :telephone, :situation, :nombre_enfant, :groupage, :date_entree )
     end
 end

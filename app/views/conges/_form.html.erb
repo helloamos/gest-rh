@@ -1,4 +1,4 @@
-<%= form_with(model: conge, local: true) do |form| %>
+<%= form_with(model: conge, local: false) do |form| %>
   <div class="modal-body">
   <% if conge.errors.any? %>
     <div id="error_explanation">
@@ -12,25 +12,33 @@
     </div>
   <% end %>
 
+ <div class="form-group">
+    <%= form.label :matricule_employe %>
+    <%= form.text_field :matricule_employe, id: :conge_matricule_employe, class: "form-control", required: true %>
+  </div>
+
   <div class="form-group">
     <%= form.label :type_conge_id %>
-    <%= form.text_field :type_conge_id, id: :conge_type_conge_id , class: "form-control"%>
+    <%= form.collection_select(:type_conge_id, @type_conges,  :id, :name , {prompt: "Type de congé"}, class: "form-control", required: true) %>
+
   </div>
 
   <div class="form-group">
     <%= form.label :date_debut %>
-    <%= form.date_field :date_debut, id: :conge_date_debut, class: "form-control" %>
+    <%= form.date_field :date_debut, id: :conge_date_debut, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
-    <%= form.label :cause %>
-    <%= form.text_area :cause, id: :conge_cause, class: "form-control" %>
+    <%= form.label :date_fin %>
+    <%= form.date_field :date_fin, id: :conge_date_fin, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
-    <%= form.label :matricule_employe_id %>
-    <%= form.text_field :matricule_employe_id, id: :conge_matricule_employe_id, class: "form-control" %>
+    <%= form.label :motif %>
+    <%= form.text_area :motif, id: :conge_cause, class: "form-control", required: true %>
   </div>
+
+ 
 
   </div><!-- modal body -->
   <div class="modal-footer">

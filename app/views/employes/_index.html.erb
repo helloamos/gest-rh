@@ -1,0 +1,21 @@
+<% if @employes %>
+    <% @employes.each do |employe| %>
+        <tr>
+            <td><%= employe.matricule %></td>
+            <td><%= employe.nom %></td>
+            <td><%= employe.prenom %></td>
+            <td><%= employe.sexe %></td>
+            <td><%= employe.date_naissance %></td>
+            <td><%= employe.lieu_naissance %></td>
+            <td><%= employe.adresse %></td>
+            <td><%= employe.telephone %></td>
+            <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_employe_path(employe), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_employe_path(employe), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+        </tr>
+    <% end %>
+<% end %>

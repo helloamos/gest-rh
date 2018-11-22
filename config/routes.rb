@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   resources :avancements
   resources :type_conges
   resources :conges
-  resources :employes
+  #resources :employes
+
+  resources :employes do
+    get 'delete'
+  end
     resources :roles
   resources :super_admins
   get "/dashboard" => "dashboard#index" , as: :dashboard
@@ -27,8 +31,11 @@ Rails.application.routes.draw do
  
   
   delete "/user/destroy/:id" => "custom_users#destroy", as: :destroy_user
-  
   get "/user/delete/:id" => "custom_users#delete", as: :delete_user
+
+
+  delete "/employe/destroy/:id" => "employes#destroy", as: :destroy_employe
+  get "/employe/delete/:id" => "employes#delete", as: :delete_employe
   
   get "/user/enable/:id" => "custom_users#get_enable", as: :get_enable_user_account
   post "/user/enable/:id" => "custom_users#post_enable", as: :post_enable_user_account

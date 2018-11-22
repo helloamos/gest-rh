@@ -16,7 +16,9 @@ class CongesController < ApplicationController
 
   # GET /conges/new
   def new
+    @type_conges = TypeConge.all
     @conge = Conge.new
+
   end
 
   # GET /conges/1/edit
@@ -71,6 +73,6 @@ class CongesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def conge_params
-      params.require(:conge).permit(:type_conge_id, :date_debut, :cause, :matricule_employe_id)
+      params.require(:conge).permit(:type_conge_id, :date_debut, :date_fin,  :motif, :matricule_employe)
     end
 end

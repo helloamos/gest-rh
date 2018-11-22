@@ -1,4 +1,4 @@
-<%= form_with(model: employe, local: true) do |form| %>
+<%= form_with(model: employe, local: false) do |form| %>
   <div class="modal-body">
   <% if employe.errors.any? %>
     <div id="error_explanation">
@@ -12,45 +12,78 @@
     </div>
   <% end %>
 
-  <div class="form-group">
-    <%= form.label :matricule %>
-    <%= form.text_field :matricule, id: :employe_matricule, class: "form-control" %>
+<div class="row">
+	<div class="col-sm-6">
+		<div class="form-group">
+			<%= form.label :matricule %>
+			<%= form.text_field :matricule, id: :employe_matricule, class: "form-control" %>
+		</div>
+
+    	<div class="form-group">
+			<%= form.label :nom %>
+			<%= form.text_field :nom, id: :employe_nom, class: "form-control" %>
+		</div>
+
+		<div class="form-group">
+			<%= form.label :prenom %>
+			<%= form.text_field :prenom, id: :employe_prenom, class: "form-control" %>
+		</div>
+
+      <div class="form-group">
+        <%= form.label :sexe %>
+        <%= form.select :sexe, Employe::EMPLOYE_SEXE, {prompt: "Veuillez sélectionner"}, class: "form-control"%>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :date_naissance %>
+        <%= form.date_field :date_naissance, id: :employe_date_naissance, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :lieu_naissance %>
+        <%= form.text_field :lieu_naissance, id: :employe_lieu_naissance, class: "form-control" %>
+      </div>
+
   </div>
 
-  <div class="form-group">
-    <%= form.label :nom %>
-    <%= form.text_field :nom, id: :employe_nom, class: "form-control" %>
+  <div class="col-sm-6">
+    <div class="form-group">
+        <%= form.label :situation %>
+        <%= form.text_field :situation, id: :employe_situation, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :nombre_enfant %>
+        <%= form.number_field :nombre_enfant, id: :employe_nombre_enfant, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :groupage %>
+        <%= form.text_field :groupage, id: :employe_groupage, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :date_entree %>
+        <%= form.date_field :date_entree, id: :employe_date_entree, class: "form-control" %>
+      </div>
+
+
+    <div class="form-group">
+      <%= form.label :adresse %>
+      <%= form.text_field :adresse, id: :employe_adresse, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :telephone %>
+      <%= form.text_field :telephone, id: :employe_telephone, class: "form-control" %>
+    </div>
   </div>
 
-  <div class="form-group">
-    <%= form.label :prenom %>
-    <%= form.text_field :prenom, id: :employe_prenom, class: "form-control" %>
-  </div>
+ 
 
-  <div class="form-group">
-    <%= form.label :sexe %>
-    <%= form.text_field :sexe, id: :employe_sexe, class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :date_naissance %>
-    <%= form.date_field :date_naissance, id: :employe_date_naissance, class: "form-control" %>
-  </div>
 
-  <div class="form-group">
-    <%= form.label :lieu_naissance %>
-    <%= form.text_field :lieu_naissance, id: :employe_lieu_naissance, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :adresse %>
-    <%= form.text_field :adresse, id: :employe_adresse, class: "form-control" %>
-  </div>
-
-  <div class="form-group">
-    <%= form.label :telephone %>
-    <%= form.text_field :telephone, id: :employe_telephone, class: "form-control" %>
-  </div>
+  
 
   </div><!-- modal body -->
   <div class="modal-footer">

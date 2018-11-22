@@ -1,0 +1,13 @@
+<% @conges.each do |conge| %>
+      <tr>
+        <td><%= conge.type_conge %></td>
+        <td><%= conge.date_debut %></td>
+        <td><%= conge.date_fin %></td>
+
+        <td><%= conge.cause %></td>
+        <td><%= conge.matricule_employe %></td>
+        
+        <td><%= link_to 'Edit', edit_conge_path(conge) %>
+        <%= link_to 'Destroy', conge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
