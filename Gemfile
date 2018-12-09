@@ -129,3 +129,13 @@ gem 'whenever', '~> 0.10.0', require: false
 
 # Remotipart is a Ruby on Rails gem enabling remote multipart forms
 gem 'remotipart', '~> 1.4', '>= 1.4.2'
+
+
+gem "loofah", ">= 2.2.3"
+
+
+gem "rack", ">= 2.0.6"
+
+
+
+
