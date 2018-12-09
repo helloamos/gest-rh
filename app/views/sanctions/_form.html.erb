@@ -1,4 +1,4 @@
-<%= form_with(model: sanction, local: true) do |form| %>
+<%= form_with(model: sanction, local: false) do |form| %>
   <div class="modal-body">
 
   <% if sanction.errors.any? %>
@@ -19,18 +19,24 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :duree_sanction %>
-    <%= form.text_field :duree_sanction, id: :sanction_duree_sanction, class: "form-control" %>
+    <%= form.label :date_debut %>
+    <%= form.date_field :date_debut, class: "form-control", required: true %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :date_fin %>
+    <%= form.date_field :date_fin, class: "form-control", required: true %>
   </div>
 
   <div class="form-group">
     <%= form.label :type_sanction %>
-    <%= form.text_field :type_sanction, id: :sanction_type_sanction, class: "form-control" %>
+      <%= form.collection_select(:type_sanction_id, @type_sanctions,  :id, :nom , {prompt: "Type de congé"}, class: "form-control", required: true) %>
+
   </div>
 
   <div class="form-group">
-    <%= form.label :cause %>
-    <%= form.text_area :cause, id: :sanction_cause, class: "form-control" %>
+    <%= form.label :motif %>
+    <%= form.text_area :motif,  class: "form-control" %>
   </div>
 
   </div><!-- modal body -->

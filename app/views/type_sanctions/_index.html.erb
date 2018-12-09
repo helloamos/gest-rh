@@ -1,0 +1,15 @@
+ <% @type_sanctions.each do |type_sanction| %>
+      <tr>
+      <td><%= type_sanction.id %></td>
+        <td><%= type_sanction.nom %></td>
+        
+<td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_type_sanction_path(type_sanction), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_type_sanction_path(type_sanction), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
+      </tr>
+    <% end %>

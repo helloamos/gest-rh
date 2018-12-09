@@ -1,0 +1,14 @@
+<% @fonctions.each do |fonction| %>
+      <tr>
+      <td><%= fonction.id %></td>
+        <td><%= fonction.nom %></td>
+       
+        <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_fonction_path(fonction), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_fonction_path(fonction), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+      </tr>
+    <% end %>

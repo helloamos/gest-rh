@@ -1,5 +1,6 @@
 class TypeCongesController < ApplicationController
   before_action :set_type_conge, only: [:show, :edit, :update, :destroy]
+  layout 'dashboard'
 
   # GET /type_conges
   # GET /type_conges.json
@@ -28,11 +29,16 @@ class TypeCongesController < ApplicationController
 
     respond_to do |format|
       if @type_conge.save
+        @type_conges = TypeConge.all
+
         format.html { redirect_to @type_conge, notice: 'Type conge was successfully created.' }
         format.json { render :show, status: :created, location: @type_conge }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @type_conge.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
   end
@@ -41,12 +47,18 @@ class TypeCongesController < ApplicationController
   # PATCH/PUT /type_conges/1.json
   def update
     respond_to do |format|
+
       if @type_conge.update(type_conge_params)
+        format.js
+        @type_conges = TypeConge.all
+
         format.html { redirect_to @type_conge, notice: 'Type conge was successfully updated.' }
         format.json { render :show, status: :ok, location: @type_conge }
       else
         format.html { render :edit }
         format.json { render json: @type_conge.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
   end
@@ -56,6 +68,10 @@ class TypeCongesController < ApplicationController
   def destroy
     @type_conge.destroy
     respond_to do |format|
+      @type_conges = TypeConge.all
+
+      format.js
+
       format.html { redirect_to type_conges_url, notice: 'Type conge was successfully destroyed.' }
       format.json { head :no_content }
     end

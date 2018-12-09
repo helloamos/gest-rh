@@ -1,4 +1,5 @@
-<%= form_with(model: type_conge, local: true) do |form| %>
+<%= form_with(model: type_conge, local: false) do |form| %>
+<div class="modal-body">
   <% if type_conge.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(type_conge.errors.count, "error") %> prohibited this type_conge from being saved:</h2>
@@ -11,12 +12,15 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :type_conge_name %>
+  <div class="form-group">
+    <%= form.label "Libellé" %>
+    <%= form.text_field :name, id: :type_conge_name, class: "form-control" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+ 
+  </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
   </div>
 <% end %>

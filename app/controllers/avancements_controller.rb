@@ -26,12 +26,15 @@ class AvancementsController < ApplicationController
   # POST /avancements
   # POST /avancements.json
   def create
-    @avancement = Avancement.new(avancement_params)
+    @avancement = current_user.avancements.build(avancement_params)
 
     respond_to do |format|
       if @avancement.save
+        @avancements = Avancement.all
+
         format.html { redirect_to @avancement, notice: 'Avancement was successfully created.' }
         format.json { render :show, status: :created, location: @avancement }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @avancement.errors, status: :unprocessable_entity }
@@ -44,22 +47,32 @@ class AvancementsController < ApplicationController
   def update
     respond_to do |format|
       if @avancement.update(avancement_params)
+        @avancements = Avancement.all
+
         format.html { redirect_to @avancement, notice: 'Avancement was successfully updated.' }
         format.json { render :show, status: :ok, location: @avancement }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @avancement.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
+  def delete
+    @avancement = Avancement.find(params[:conge_id])
+  end
   # DELETE /avancements/1
   # DELETE /avancements/1.json
   def destroy
     @avancement.destroy
+    @avancements = Avancement.all
+
     respond_to do |format|
       format.html { redirect_to avancements_url, notice: 'Avancement was successfully destroyed.' }
       format.json { head :no_content }
+       format.js
     end
   end
 

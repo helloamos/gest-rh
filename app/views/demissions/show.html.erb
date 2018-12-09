@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Date demission:</strong>
+  <%= @demission.date_demission %>
+</p>
+
+<p>
+  <strong>Matricule employe:</strong>
+  <%= @demission.matricule_employe %>
+</p>
+
+<p>
+  <strong>Etat:</strong>
+  <%= @demission.etat %>
+</p>
+
+<%= link_to 'Edit', edit_demission_path(@demission) %> |
+<%= link_to 'Back', demissions_path %>

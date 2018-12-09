@@ -12,6 +12,17 @@ module ApplicationHelper
 		User
 	  end
 	
+
+	  def type_conge_id_to_libelle(id)
+		type_conge = TypeConge.find(id)
+		type_conge.name
+	  end
+
+	  def type_sanction_id_to_libelle(id)
+		type_sanction = TypeSanction.find(id)
+		type_sanction.nom
+	  end
+
 	def is_admin?
 		if  current_user.role == 'Admin'
 			true

@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @demission.errors.any? %>
+  <% @demission.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".demissions").html("<%= escape_javascript(render 'index') %>");
+  $("#demission-modal").modal("hide");
+ 
+<% end %>

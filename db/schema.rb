@@ -10,16 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20181009212009) do
-
-  # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+ActiveRecord::Schema.define(version: 20181122185236) do
 
   create_table "avancements", force: :cascade do |t|
     t.string "matricule_employe"
     t.date "date_avancement"
+    t.string "etat"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_avancements_on_user_id"
   end
 
   create_table "conges", force: :cascade do |t|
@@ -28,12 +28,22 @@ ActiveRecord::Schema.define(version: 20181009212009) do
     t.date "date_fin"
     t.string "motif"
     t.string "etat"
-    t.bigint "type_conge_id", null: false
-    t.bigint "user_id", null: false
+    t.integer "type_conge_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["type_conge_id"], name: "index_conges_on_type_conge_id"
     t.index ["user_id"], name: "index_conges_on_user_id"
+  end
+
+  create_table "demissions", force: :cascade do |t|
+    t.date "date_demission"
+    t.string "matricule_employe"
+    t.string "etat"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_demissions_on_user_id"
   end
 
   create_table "employes", force: :cascade do |t|
@@ -58,13 +68,26 @@ ActiveRecord::Schema.define(version: 20181009212009) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "mutations", force: :cascade do |t|
-    t.string "matricule_employe"
-    t.string "etablissement"
-    t.text "cause"
-    t.date "date_mutation"
+  create_table "fonctions", force: :cascade do |t|
+    t.string "nom"
+    t.string "etat"
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_fonctions_on_user_id"
+  end
+
+  create_table "mutations", force: :cascade do |t|
+    t.string "matricule_employe"
+    t.string "etablissement_origine"
+    t.string "etablissement_destination"
+    t.text "motif"
+    t.date "date_mutation"
+    t.string "etat"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_mutations_on_user_id"
   end
 
   create_table "roles", force: :cascade do |t|
@@ -75,11 +98,26 @@ ActiveRecord::Schema.define(version: 20181009212009) do
 
   create_table "sanctions", force: :cascade do |t|
     t.string "matricule_employe"
-    t.string "duree_sanction"
-    t.string "type_sanction"
-    t.text "cause"
+    t.date "date_debut"
+    t.date "date_fin"
+    t.text "motif"
+    t.string "etat"
+    t.integer "type_sanction_id", null: false
+    t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["type_sanction_id"], name: "index_sanctions_on_type_sanction_id"
+    t.index ["user_id"], name: "index_sanctions_on_user_id"
+  end
+
+  create_table "services", force: :cascade do |t|
+    t.string "nom"
+    t.string "telephone"
+    t.string "etat"
+    t.integer "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "super_admins", force: :cascade do |t|
@@ -92,6 +130,14 @@ ActiveRecord::Schema.define(version: 20181009212009) do
 
   create_table "type_conges", force: :cascade do |t|
     t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "type_sanctions", force: :cascade do |t|
+    t.string "nom"
+    t.text "description"
+    t.string "etat"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -114,14 +160,10 @@ ActiveRecord::Schema.define(version: 20181009212009) do
     t.integer "sign_in_count", default: 0, null: false
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
-    t.inet "current_sign_in_ip"
-    t.inet "last_sign_in_ip"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "conges", "type_conges"
-  add_foreign_key "conges", "users"
 end

@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @type_conge.errors.any? %>
+  <% @type_conge.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".type-conges").html("<%= escape_javascript(render 'index') %>");
+  $("#type-conge-modal").modal("hide");
+ 
+<% end %>

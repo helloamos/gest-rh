@@ -1,0 +1,27 @@
+<%= form_with(model: type_sanction, local: false) do |form| %>
+<div class="modal-body">
+  <% if type_sanction.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(type_sanction.errors.count, "error") %> prohibited this type_sanction from being saved:</h2>
+
+      <ul>
+      <% type_sanction.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :nom %>
+    <%= form.text_field :nom, id: :type_sanction_nom, class: "form-control", required: true %>
+  </div>
+
+  
+
+ </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

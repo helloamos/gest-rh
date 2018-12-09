@@ -1,0 +1,20 @@
+<% @mutations.each do |mutation| %>
+      <tr>
+       <td><%= mutation.id %></td>
+        <td><%= mutation.matricule_employe %></td>
+        <td><%= mutation.etablissement_origine %></td>
+        <td><%= mutation.etablissement_destination %></td>
+
+        <td><%= mutation.motif %></td>
+        <td><%= mutation.date_mutation %></td>
+      
+       <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_mutation_path(mutation), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_mutation_path(mutation), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
+      </tr>
+    <% end %>

@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @fonction.nom %>
+</p>
+
+<p>
+  <strong>Etat:</strong>
+  <%= @fonction.etat %>
+</p>
+
+<%= link_to 'Edit', edit_fonction_path(@fonction) %> |
+<%= link_to 'Back', fonctions_path %>

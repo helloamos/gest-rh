@@ -1,0 +1,15 @@
+ <% @demissions.each do |demission| %>
+      <tr>
+      <td><%= demission.id %></td>
+        <td><%= demission.date_demission %></td>
+        <td><%= demission.matricule_employe %></td>
+      
+        <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_demission_path(demission), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_demission_path(demission), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+      </tr>
+    <% end %>

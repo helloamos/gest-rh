@@ -20,22 +20,16 @@
 		<table id="table-list" class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
+		<th>ID</th>
       <th>Matricule employe</th>
       <th>Date avancement</th>
       <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @avancements.each do |avancement| %>
-      <tr>
-        <td><%= avancement.matricule_employe %></td>
-        <td><%= avancement.date_avancement %></td>
-       
-        <td><%= link_to 'Edit', edit_avancement_path(avancement) %>
-       <%= link_to 'Destroy', avancement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="avancements">
+        	<%= render('index') %>
+
   </tbody>
 </table>
 </div>

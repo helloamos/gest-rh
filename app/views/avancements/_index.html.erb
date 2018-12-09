@@ -1,0 +1,16 @@
+<% @avancements.each do |avancement| %>
+      <tr>
+       <td><%= avancement.id %></td>
+        <td><%= avancement.matricule_employe %></td>
+        <td><%= avancement.date_avancement %></td>
+       
+        <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_avancement_path(avancement), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_avancement_path(avancement), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
+      </tr>
+    <% end %>

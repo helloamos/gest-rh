@@ -1,0 +1,2 @@
+class TypeSanction < ApplicationRecord
+end

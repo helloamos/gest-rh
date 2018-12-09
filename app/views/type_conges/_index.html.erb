@@ -1,0 +1,15 @@
+ <% @type_conges.each do |type_conge| %>
+      <tr>
+      <td><%= type_conge.id %></td>
+        <td><%= type_conge.name %></td>
+
+         <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_type_conge_path(type_conge), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_type_conge_path(type_conge), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
+      </tr>
+    <% end %>

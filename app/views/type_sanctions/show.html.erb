@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Nom:</strong>
+  <%= @type_sanction.nom %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @type_sanction.description %>
+</p>
+
+<p>
+  <strong>Etat:</strong>
+  <%= @type_sanction.etat %>
+</p>
+
+<%= link_to 'Edit', edit_type_sanction_path(@type_sanction) %> |
+<%= link_to 'Back', type_sanctions_path %>

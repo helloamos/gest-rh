@@ -1,6 +1,7 @@
 <% if @employes %>
     <% @employes.each do |employe| %>
         <tr>
+            <td><%= employe.id %></td>
             <td><%= employe.matricule %></td>
             <td><%= employe.nom %></td>
             <td><%= employe.prenom %></td>

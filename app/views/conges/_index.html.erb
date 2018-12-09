@@ -1,13 +1,21 @@
 <% @conges.each do |conge| %>
       <tr>
-        <td><%= conge.type_conge %></td>
+      <td><%= conge.id%></td>
+
+        <td><%= type_conge_id_to_libelle(conge.type_conge_id) %></td>
         <td><%= conge.date_debut %></td>
         <td><%= conge.date_fin %></td>
 
-        <td><%= conge.cause %></td>
+        <td><%= conge.motif %></td>
         <td><%= conge.matricule_employe %></td>
         
-        <td><%= link_to 'Edit', edit_conge_path(conge) %>
-        <%= link_to 'Destroy', conge, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_conge_path(conge), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_conge_path(conge), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
       </tr>
     <% end %>

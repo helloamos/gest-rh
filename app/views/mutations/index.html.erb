@@ -20,26 +20,20 @@
 		<table id="table-list" class="table table-striped table-bordered table-hover">
   <thead>
     <tr>
-      <th>Matricule employe</th>
-      <th>Etablissement</th>
-      <th>Cause</th>
+    <th>ID</th>
+      <th>Matricule employé</th>
+      <th>Etab. d'origine</th>
+      <th>Etab. destination</th>
+
+      <th>Motif</th>
       <th>Date mutation</th>
       <th>Actions</th>
     </tr>
   </thead>
 
-  <tbody>
-    <% @mutations.each do |mutation| %>
-      <tr>
-        <td><%= mutation.matricule_employe %></td>
-        <td><%= mutation.etablissement %></td>
-        <td><%= mutation.cause %></td>
-        <td><%= mutation.date_mutation %></td>
-      
-        <td><%= link_to 'Edit', edit_mutation_path(mutation) %>
-        <%= link_to 'Destroy', mutation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
+  <tbody class="mutations">
+    <%= render('index') %>
+
   </tbody>
 </table>
 </div>

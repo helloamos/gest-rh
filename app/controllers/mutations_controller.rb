@@ -25,15 +25,20 @@ class MutationsController < ApplicationController
   # POST /mutations
   # POST /mutations.json
   def create
-    @mutation = Mutation.new(mutation_params)
+    @mutation = current_user.mutations.build(mutation_params)
 
     respond_to do |format|
       if @mutation.save
+        @mutations = Mutation.all
+
         format.html { redirect_to @mutation, notice: 'Mutation was successfully created.' }
         format.json { render :show, status: :created, location: @mutation }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @mutation.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
   end
@@ -43,22 +48,37 @@ class MutationsController < ApplicationController
   def update
     respond_to do |format|
       if @mutation.update(mutation_params)
+        @mutations = Mutation.all
+
         format.html { redirect_to @mutation, notice: 'Mutation was successfully updated.' }
         format.json { render :show, status: :ok, location: @mutation }
+        format.js
+
       else
         format.html { render :edit }
         format.json { render json: @mutation.errors, status: :unprocessable_entity }
+        format.js
+
       end
     end
+  end
+
+
+  def delete
+    @mutation = Mutation.find(params[:id])
   end
 
   # DELETE /mutations/1
   # DELETE /mutations/1.json
   def destroy
     @mutation.destroy
+    @mutations = Mutation.all
+
     respond_to do |format|
       format.html { redirect_to mutations_url, notice: 'Mutation was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
+
     end
   end
 
@@ -70,6 +90,6 @@ class MutationsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def mutation_params
-      params.require(:mutation).permit(:matricule_employe, :etablissement, :cause, :date_mutation)
+      params.require(:mutation).permit(:matricule_employe, :etablissement_origine, :etablissement_destination, :motif, :date_mutation)
     end
 end

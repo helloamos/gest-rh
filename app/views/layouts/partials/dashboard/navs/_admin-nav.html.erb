@@ -27,16 +27,16 @@ Mutations'), mutations_path %>
 				<%= link_to raw('<i class="fa fa-balance-scale" aria-hidden="true"></i>
 Sanctions'), sanctions_path %>
 			</li>
-			
+
 			<li>
-				<a href="#commissiondropdownDropdown" aria-expanded="false" data-toggle="collapse"> 
-					<i class="fa fa-money" aria-hidden="true"></i>Commissions</a>
-                <ul id="commissiondropdownDropdown" class="collapse list-unstyled ">
-                    <li><%= link_to raw('<i class="fa fa-address-book-o" aria-hidden="true"></i>Apporteurs'), dashboard_path %>
-                    </li>
-                    
-                </ul>
-            </li>
+				<%= link_to raw('<i class="fa fa-balance-scale" aria-hidden="true"></i>
+Services'), services_path %>
+			</li>
+			<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
+									Démissions'),demissions_path %>
+							</li>
+			
+			
 				
            
             
@@ -55,11 +55,16 @@ Sanctions'), sanctions_path %>
 							<% end %>
 						<% if is_admin?  %>
 							<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
-									Société'),dashboard_path %>
+									Type congé'),type_conges_path %>
 							</li>
-                            <li>
-                                <%= link_to raw('<i class="fa fa-envelope" aria-hidden="true"></i>Config. messagerie'), dashboard_path %>
+							<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
+									Type sanction'),type_sanctions_path %>
 							</li>
+							<li><%= link_to raw('<i class="fa fa-home" aria-hidden="true"></i>
+									Fonction'),fonctions_path %>
+							</li>
+							
+                            
 							
 					<% end %>
 				</ul>

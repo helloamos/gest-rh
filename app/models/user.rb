@@ -6,7 +6,7 @@ class User < ApplicationRecord
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable
 	devise :database_authenticatable, :registerable,
-	:recoverable, :rememberable, :trackable, :validatable
+	:recoverable, :rememberable,  :validatable #, :trackable,
 
 
 	# Fields validations.
@@ -18,7 +18,14 @@ class User < ApplicationRecord
 
 	# User relationships.
 
+	has_many :conges
+	has_many :avancements
+	has_many :mutations
+	has_many :sanctions
+	has_many :services
 
+	has_many :demissions
+	has_many :fonctions
 
 	
 	

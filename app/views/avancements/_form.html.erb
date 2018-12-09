@@ -1,4 +1,4 @@
-<%= form_with(model: avancement, local: true) do |form| %>
+<%= form_with(model: avancement, local: false) do |form| %>
   <div class="modal-body">
   <% if avancement.errors.any? %>
     <div id="error_explanation">
@@ -19,7 +19,7 @@
 
   <div class="form-group">
     <%= form.label :date_avancement %>
-    <%= form.date_field :date_avancement, id: :avancement_date_avancement , class: "form-control" %>
+    <%= form.date_field :date_avancement, id: :avancement_date_avancement , class: "form-control", required: true %>
   </div>
 
   </div><!-- modal body -->

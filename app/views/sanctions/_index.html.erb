@@ -1,0 +1,19 @@
+<% @sanctions.each do |sanction| %>
+      <tr>
+      <td><%= sanction.id %></td>
+        <td><%= sanction.matricule_employe %></td>
+        <td><%= sanction.date_debut %></td>
+        <td><%= sanction.date_fin %></td>
+        <td><%= type_sanction_id_to_libelle(sanction.type_sanction_id) %></td>
+        <td><%= sanction.motif %></td>
+       
+       <td class="action-buttons">
+                <%= link_to raw('<i class="fa fa-pencil" aria-hidden="true"></i>
+'), edit_sanction_path(sanction), title: "Modifier", remote: true %>
+
+<%= link_to raw('<i class="fa fa-trash-o" aria-hidden="true"></i>
+'), delete_sanction_path(sanction), remote: true, title: "Supprimer", class: "delete" %>
+            </td>
+
+      </tr>
+    <% end %>

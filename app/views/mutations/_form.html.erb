@@ -1,4 +1,4 @@
-<%= form_with(model: mutation, local: true) do |form| %>
+<%= form_with(model: mutation, local: false) do |form| %>
   <div class="modal-body">
 
   <% if mutation.errors.any? %>
@@ -19,13 +19,19 @@
   </div>
 
   <div class="form-group">
-    <%= form.label :etablissement %>
-    <%= form.text_field :etablissement, id: :mutation_etablissement, class: "form-control" %>
+    <%= form.label :etablissement_origine %>
+    <%= form.text_field :etablissement_origine, id: :mutation_etablissement_origine, class: "form-control" %>
   </div>
 
+   <div class="form-group">
+    <%= form.label :etablissement_destination %>
+    <%= form.text_field :etablissement_destination, id: :mutation_etablissement_destination, class: "form-control" %>
+  </div>
+
+
   <div class="form-group">
-    <%= form.label :cause %>
-    <%= form.text_area :cause, id: :mutation_cause , class: "form-control" %>
+    <%= form.label :motif %>
+    <%= form.text_area :motif, id: :mutation_motif , class: "form-control" %>
   </div>
 
   <div class="form-group">

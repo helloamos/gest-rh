@@ -1,0 +1,32 @@
+<%= form_with(model: demission, local: false) do |form| %>
+<div class="modal-body">
+  <% if demission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(demission.errors.count, "error") %> prohibited this demission from being saved:</h2>
+
+      <ul>
+      <% demission.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :date_demission %>
+    <%= form.date_field :date_demission, id: :demission_date_demission, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :matricule_employe %>
+    <%= form.text_field :matricule_employe, id: :demission_matricule_employe, class: "form-control" %>
+  </div>
+
+
+
+  </div><!-- modal body -->
+  <div class="modal-footer">
+      <%= link_to "Annuler", "#", class: "btn", data: {dismiss: "modal"} %>
+      <%= form.submit "Enregistrer", class: "btn btn-primary",  "data-loading-text"=>"Loading...", autocomplete: "off" %>
+  </div>
+<% end %>

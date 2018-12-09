@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @mutation.errors.any? %>
+  <% @mutation.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".mutations").html("<%= escape_javascript(render 'index') %>");
+  $("#mutation-modal").modal("hide");
+ 
+<% end %>

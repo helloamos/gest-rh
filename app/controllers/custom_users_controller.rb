@@ -26,12 +26,12 @@ class CustomUsersController < ApplicationController
 			  	#first_admin = User.where(role: "Admin")
 			  
 				# Sending mail based on receive notifications status.
-				if @user.receives_notifications == true && @user.status =='enable'
+				#if @user.receives_notifications == true && @user.status =='enable'
 					
-					url = user_session_url
-					UserMailer.new_user_mail(@user.email, @user.password, url).deliver_now
+					#url = user_session_url
+					#UserMailer.new_user_mail(@user.email, @user.password, url).deliver_now
 					
-				end
+				#end
         	else
 				format.html { render :new }
 				format.json { render json: @user.errors, status: :unprocessable_entity }
@@ -132,10 +132,10 @@ class CustomUsersController < ApplicationController
 				format.js
       
 				# Send mail to user.
-				if @user.receives_notifications == true && @user.status =='enable'
-					url = user_session_url
-					UserMailer.enable_user_mail(@user.email, @user.password, url).deliver_now
-				end
+				#if @user.receives_notifications == true && @user.status =='enable'
+					#url = user_session_url
+					#UserMailer.enable_user_mail(@user.email, @user.password, url).deliver_now
+				#end
 			  
 			else
 				format.html { render :edit }
@@ -159,10 +159,10 @@ class CustomUsersController < ApplicationController
 				format.js
 		
 				# Send mail to user.
-				if @user.receives_notifications == true && @user.status =='enable'
-					url = user_session_url
-					UserMailer.delete_user_mail(@user.email, @user.password, url).deliver_now
-				end
+				#if @user.receives_notifications == true && @user.status =='enable'
+					#url = user_session_url
+					#UserMailer.delete_user_mail(@user.email, @user.password, url).deliver_now
+				#end
 		
 			end
 		end
@@ -183,10 +183,10 @@ class CustomUsersController < ApplicationController
 				format.js
 			
 				# Send mail to user.
-				if @user.receives_notifications == true && @user.status =='enable'
-					url = user_session_url
-					UserMailer.edit_user_mail(@user.email, @user.password, url).deliver_now
-				end
+				#if @user.receives_notifications == true && @user.status =='enable'
+					#url = user_session_url
+					#UserMailer.edit_user_mail(@user.email, @user.password, url).deliver_now
+				#end
 			else
 				format.html { render :edit }
 				format.json { render json: @user.errors, status: :unprocessable_entity }

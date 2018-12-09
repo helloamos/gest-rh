@@ -23,20 +23,24 @@ class CongesController < ApplicationController
 
   # GET /conges/1/edit
   def edit
+    @type_conges = TypeConge.all
   end
 
   # POST /conges
   # POST /conges.json
   def create
-    @conge = Conge.new(conge_params)
+    @conge = current_user.conges.build(conge_params)
 
     respond_to do |format|
       if @conge.save
+        @conges = Conge.all
         format.html { redirect_to @conge, notice: 'Conge was successfully created.' }
         format.json { render :show, status: :created, location: @conge }
+        format.js
       else
         format.html { render :new }
         format.json { render json: @conge.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
@@ -46,22 +50,30 @@ class CongesController < ApplicationController
   def update
     respond_to do |format|
       if @conge.update(conge_params)
+        @conges = Conge.all
         format.html { redirect_to @conge, notice: 'Conge was successfully updated.' }
         format.json { render :show, status: :ok, location: @conge }
+        format.js
       else
         format.html { render :edit }
         format.json { render json: @conge.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end
 
+  def delete
+    @conge = Conge.find(params[:id])
+  end
   # DELETE /conges/1
   # DELETE /conges/1.json
   def destroy
     @conge.destroy
+    @conges = Conge.all
     respond_to do |format|
       format.html { redirect_to conges_url, notice: 'Conge was successfully destroyed.' }
       format.json { head :no_content }
+      format.js
     end
   end
 

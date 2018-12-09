@@ -6,7 +6,7 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-balance-scale" aria-hidden="true"></i></div>
-					<div class="number"><%= @credits_count.to_i %></div><strong class="text-primary">Crédits</strong>
+					<div class="number"><%= @total_sanctions.to_i %></div><strong class="text-primary">Sanctions</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -15,7 +15,7 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-building" aria-hidden="true"></i></div>
-					<div class="number"><%= @banks_count.to_i %></div><strong class="text-primary">Banques</strong>
+					<div class="number"><%= @total_services.to_i %></div><strong class="text-primary">Services</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -24,7 +24,7 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-user-circle-o" aria-hidden="true"></i></div>
-					<div class="number"><%= @customers_count.to_i %></div><strong class="text-primary">Employés</strong>
+					<div class="number"><%= @total_users %></div><strong class="text-primary">Utilisateurs</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -33,7 +33,7 @@
 				<!-- Income -->
 				<div class="card income text-center">
 					<div class="icon"><i class="fa fa-users" aria-hidden="true"></i></div>
-					<div class="number"><%= @producers_and_contributors_count %></div><strong class="text-primary">Producteurs & Apporteurs</strong>
+					<div class="number"><%= @total_employes.to_i %></div><strong class="text-primary">Employés</strong>
 					<!-- <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit sed do.</p> -->
 				</div>
 			</div>
@@ -48,20 +48,20 @@
 						<table id="table-list" class="table table-striped table-bordered table-hover">
 							<thead>
 								<tr>
-								<th>N° Dossier</th>
-								<th>Date production</th>
-								<th>Date acte</th>
-								<th>Client</th>
-								<th>Banque</th>
-								<th>Montant</th>
-								<th>Apporteur</th>
-								<th>Producteur</th>
-								<th>Notaire</th>
-								<th>Actions</th>
+								<th>Matricule</th>
+						<th>Nom</th>
+						<th>Prenom</th>
+						<th>Sexe</th>
+						<th>Date naissance</th>
+						<th>Lieu naissance</th>
+						<th>Adresse</th>
+						<th>Telephone</th>
+						<th>Actions</th>
 								</tr>
 							</thead>
 
-							<tbody class="credits">
+							<tbody class="employes">
+								<%= render './employes/index' %>
 							</tbody>
 						</table>
 					</div>

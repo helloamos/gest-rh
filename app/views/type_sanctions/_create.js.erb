@@ -1,0 +1,10 @@
+$("ul.errors").html("");
+<% if @type_sanction.errors.any? %>
+  <% @type_sanction.errors.full_messages.each do |message| %>
+    $("ul.errors").append($("<li />").html("<%= message.html_safe %>"));
+  <% end %>
+<% else %>
+  $(".type-sanctions").html("<%= escape_javascript(render 'index') %>");
+  $("#type-sanction-modal").modal("hide");
+ 
+<% end %>
